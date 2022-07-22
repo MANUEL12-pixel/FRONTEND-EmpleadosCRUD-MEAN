@@ -1,0 +1,70 @@
+<div class="container mt-4" style="justify-content: center">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card text-center">
+        <div class="card-body">
+          <h3>Agregar empleado
+
+          </h3>
+          <span style="margin-bottom: 50px;" *ngIf="saveEmpleadoForm.invalid" class="badge badge-danger">TODOS LOS
+            CAMPOS
+            SON OBLIGATORIOS</span>
+          <form [formGroup]="saveEmpleadoForm">
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control form-control-lg" [(ngModel)]="empleado.nombre"
+                  formControlName="nombre" placeholder="Nombre">
+                <div *ngIf="saveEmpleadoForm.controls['nombre'].invalid &&
+                (saveEmpleadoForm.controls['nombre'].dirty ||
+                saveEmpleadoForm.controls['nombre'].touched)
+              " class="alert alert-danger m-0 mt-1 p-1">
+                  <div *ngIf="saveEmpleadoForm.controls['nombre'].errors" role="alert">
+                    Este campo es obligatorio
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control form-control-lg" [(ngModel)]="empleado.apellidos"
+                  formControlName="apellidos" placeholder="Apellido">
+                <div *ngIf="saveEmpleadoForm.controls['apellidos'].invalid &&
+                (saveEmpleadoForm.controls['apellidos'].dirty ||
+                saveEmpleadoForm.controls['apellidos'].touched)
+              " class="alert alert-danger m-0 mt-1 p-1">
+                  <div *ngIf="saveEmpleadoForm.controls['apellidos'].errors" role="alert">
+                    Este campo es obligatorio
+                  </div>
+                </div>
+              </div>
+            </div>
+            <input type="text" class="form-control form-control-lg mt-3" [(ngModel)]="empleado.matricula"
+              formControlName="matricula" placeholder="Matricula">
+            <div *ngIf="saveEmpleadoForm.controls['matricula'].invalid &&
+                (saveEmpleadoForm.controls['matricula'].dirty ||
+                saveEmpleadoForm.controls['matricula'].touched)
+              " class="alert alert-danger m-0 mt-1 p-1">
+              <div *ngIf="saveEmpleadoForm.controls['matricula'].errors" role="alert">
+                Este campo es obligatorio
+              </div>
+            </div>
+            <input type="number" class="form-control form-control-lg mt-3" [(ngModel)]="empleado.salario"
+              formControlName="salario" placeholder="Salario">
+            <div *ngIf="saveEmpleadoForm.controls['salario'].invalid &&
+                (saveEmpleadoForm.controls['salario'].dirty ||
+                saveEmpleadoForm.controls['salario'].touched)
+              " class="alert alert-danger m-0 mt-1 p-1">
+              <div *ngIf="saveEmpleadoForm.controls['salario'].errors" role="alert">
+                Este campo es obligatorio
+              </div>
+            </div>
+            <div class="mt-3">
+              <button type="text" class="btn btn-primary btn-lg mr-3" routerLink="/empleados"><i
+                  class="fa fa-arrow-left"></i> Volver</button>
+              <button type="submit" class="btn btn-danger btn-lg" [disabled]="saveEmpleadoForm.invalid"
+                (click)="edit ? actualizarEmpleado() : agregarEmpleado()">Agregar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
